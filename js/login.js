@@ -127,6 +127,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     // Muestra un mensaje de éxito antes de redirigir
                     showNotification('¡Éxito!', data.message);
 
+                    localStorage.setItem('mercifood_user', JSON.stringify(data.user));
+
                     // Espera un momento para que el usuario vea el mensaje y luego redirige
                     setTimeout(() => {
                         switch (data.user.role) {
@@ -143,7 +145,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 window.location.href = '/'; 
                                 break;
                         }
-                    }, 1500); // 1.5 segundos de espera
+                    }, 1500);
 
                 } else {
                     // Si hubo un error, muestra el mensaje de error en el modal

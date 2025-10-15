@@ -1,0 +1,263 @@
+/* --- Variables y Estilos Globales --- */
+:root {
+    --primary-color: #FF6347;
+    --dark-blue: #2c3e50;
+    --light-gray: #f8f9fa;
+    --text-color: #34495e;
+    --white-color: #FFFFFF;
+    --sidebar-width: 260px;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--light-gray);
+    color: var(--text-color);
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* --- Estructura Principal del Dashboard --- */
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* --- Barra Lateral (Sidebar) --- */
+.sidebar {
+    width: var(--sidebar-width);
+    background-color: var(--dark-blue);
+    color: var(--white-color);
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    transition: transform 0.3s ease-in-out;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 2.5rem;
+}
+
+.sidebar-logo {
+    height: 40px;
+}
+
+.sidebar-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.sidebar-nav {
+    flex-grow: 1;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-nav a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 1rem;
+    color: #bdc3c7;
+    text-decoration: none;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.sidebar-nav a:hover, .sidebar-nav a.active {
+    background-color: rgba(255, 99, 71, 0.15);
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.sidebar-nav svg {
+    width: 24px;
+    height: 24px;
+}
+
+.logout-link {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 1rem;
+    color: #bdc3c7;
+    text-decoration: none;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.05);
+    transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
+}
+
+.logout-link:hover {
+    background-color: rgba(231, 76, 60, 0.2);
+    color: #e74c3c;
+}
+
+/* --- Contenido Principal --- */
+.main-content {
+    flex-grow: 1;
+    margin-left: var(--sidebar-width);
+    padding: 2rem 3rem;
+    width: calc(100% - var(--sidebar-width));
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.welcome-message h1 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.welcome-message p {
+    margin: 0;
+    color: #7f8c8d;
+}
+
+.content-placeholder {
+    background: var(--white-color);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    min-height: 60vh;
+}
+
+/* --- Responsividad --- */
+.menu-toggle {
+    display: none;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1001;
+    background: var(--dark-blue);
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+@media (max-width: 991px) {
+    .sidebar {
+        transform: translateX(-100%);
+        z-index: 1000;
+    }
+    .sidebar.active {
+        transform: translateX(0);
+    }
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+        padding: 2rem;
+    }
+    .menu-toggle {
+        display: block;
+    }
+    .dashboard-header {
+        padding-top: 50px; /* Espacio para el botón de menú */
+    }
+}
+
+/* --- Estilos para el Modal de Confirmación --- */
+.confirmation-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.confirmation-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-box {
+    background: var(--white-color);
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 450px;
+    text-align: center;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.confirmation-modal-overlay.active .modal-box {
+    transform: scale(1);
+}
+
+.modal-box h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: var(--dark-blue);
+}
+
+.modal-box p {
+    margin-bottom: 2rem;
+    color: #6c757d;
+    line-height: 1.6;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.modal-buttons button {
+    border: none;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-cancel {
+    background-color: #ecf0f1;
+    color: var(--text-color);
+}
+
+.btn-cancel:hover {
+    background-color: #bdc3c7;
+}
+
+.btn-confirm {
+    background-color: #e74c3c; /* Un rojo suave para la acción destructiva */
+    color: var(--white-color);
+}
+
+.btn-confirm:hover {
+    background-color: #c0392b;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(192, 57, 43, 0.4);
+}
