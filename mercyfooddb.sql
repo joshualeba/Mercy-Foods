@@ -15,3 +15,14 @@ BEGIN
         vehicle_type NVARCHAR(50) NULL
     );
 END
+
+IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='FAQ' and xtype='U')
+BEGIN
+    CREATE TABLE FAQ (
+        id INT PRIMARY KEY IDENTITY(1,1),
+        question NVARCHAR(255) NOT NULL,
+        answer NVARCHAR(MAX) NOT NULL
+    );
+END
+
+-- TRUNCATE TABLE Users;
