@@ -1,14 +1,33 @@
 // --- LÓGICA PARA OCULTAR EL LOADER ---
-    window.addEventListener('load', function() {
-        const loaderWrapper = document.getElementById('loader-wrapper');
-        loaderWrapper.style.opacity = '0';
-        setTimeout(() => {
-            loaderWrapper.style.display = 'none';
-        }, 500);
-    });
+window.addEventListener('load', function() {
+    const loaderWrapper = document.getElementById('loader-wrapper');
+    loaderWrapper.style.opacity = '0';
+    setTimeout(() => {
+        loaderWrapper.style.display = 'none';
+    }, 500);
+});
 
 document.addEventListener('DOMContentLoaded', function() {
     
+    // --- LÓGICA DEL MODAL DE NOTIFICACIONES (Versión simplificada) ---
+    const notificationModal = document.getElementById('notification-modal');
+    const modalMessage = document.getElementById('modal-message');
+    let modalTimer; // Variable para controlar el temporizador
+
+    const showNotification = (message) => {
+        // Limpiamos cualquier temporizador anterior para evitar que el modal se cierre antes de tiempo
+        clearTimeout(modalTimer);
+
+        // Mostramos el mensaje y el modal
+        modalMessage.textContent = message;
+        notificationModal.classList.add('active');
+
+        // Configuramos el modal para que se cierre automáticamente después de 3 segundos
+        modalTimer = setTimeout(() => {
+            notificationModal.classList.remove('active');
+        }, 3000);
+    };
+
     // --- LÓGICA GENERAL Y DE PESTAÑAS ---
     const form = document.getElementById('register-form');
     const submitBtn = form.querySelector('.submit-btn');
@@ -22,7 +41,6 @@ document.addEventListener('DOMContentLoaded', function() {
             tabs.forEach(t => t.classList.remove('active'));
             tab.classList.add('active');
             contents.forEach(c => c.classList.toggle('active', c.id === target));
-            // Al cambiar de pestaña, resetea el formulario y deshabilita el botón
             resetValidation();
         });
     });
@@ -37,16 +55,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // --- LÓGICA DEL MODAL ---
-    const modal = document.getElementById('terms-modal');
-    document.getElementById('open-terms-link').addEventListener('click', () => modal.classList.add('active'));
-    document.getElementById('close-terms-btn').addEventListener('click', () => modal.classList.remove('active'));
-    modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('active'); });
+    // --- LÓGICA DEL MODAL DE TÉRMINOS Y CONDICIONES ---
+    const termsModal = document.getElementById('terms-modal');
+    document.getElementById('open-terms-link').addEventListener('click', () => termsModal.classList.add('active'));
+    document.getElementById('close-terms-btn').addEventListener('click', () => termsModal.classList.remove('active'));
+    termsModal.addEventListener('click', e => { if (e.target === termsModal) termsModal.classList.remove('active'); });
 
     // --- LÓGICA DE VALIDACIÓN ---
-    const validationStatus = {}; // Estado de validación para la pestaña activa
+    const validationStatus = {};
 
-    // Funciones auxiliares de UI
     const showError = (input, message) => {
         const group = input.parentElement;
         group.classList.remove('success'); group.classList.add('error');
@@ -63,29 +80,20 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     const resetValidation = () => {
-        // 1. Quita los colores de contorno (verde/rojo) de todos los campos
         form.querySelectorAll('.input-group').forEach(group => {
             group.classList.remove('error', 'success');
         });
-
-        // 2. Borra el contenido de todos los campos de contraseña
         form.querySelectorAll('input[type="password"]').forEach(input => {
             input.value = '';
         });
-
-        // 3. Reinicia el estado visual del checklist de contraseña
         checklist.querySelectorAll('li').forEach(item => item.className = '');
-
-        // 4. Resetea el objeto de validación para la nueva pestaña
         setupValidationForActiveTab();
     };
 
-    // Configura la validación según la pestaña activa
     const setupValidationForActiveTab = () => {
         const activeTabId = document.querySelector('.tab-content.active').id;
-        Object.keys(validationStatus).forEach(key => delete validationStatus[key]); // Limpia el objeto
+        Object.keys(validationStatus).forEach(key => delete validationStatus[key]);
 
-        // Se configuran los campos que deben ser válidos para cada formulario
         if (activeTabId === 'cliente') {
             Object.assign(validationStatus, { nombre: false, email: false, pass: false, passConfirm: false, terms: false });
         } else if (activeTabId === 'restaurante') {
@@ -93,10 +101,9 @@ document.addEventListener('DOMContentLoaded', function() {
         } else if (activeTabId === 'repartidor') {
             Object.assign(validationStatus, { nombre: false, email: false, vehiculo: false, pass: false, passConfirm: false, terms: false });
         }
-        checkFormValidity(); // Re-evalúa el estado del botón
+        checkFormValidity();
     };
 
-    // Validador de Contraseña (común a todos los formularios)
     const validatePassword = (passInput) => {
         const value = passInput.value;
         const isLengthValid = value.length >= 8 && value.length <= 25;
@@ -111,20 +118,17 @@ document.addEventListener('DOMContentLoaded', function() {
         if(isValid) {
             showSuccess(passInput);
         } else {
-            // No mostramos error aquí para no ser tan invasivos, el checklist guía al usuario
             passInput.parentElement.classList.remove('success', 'error');
         }
         validationStatus.pass = isValid;
         checkFormValidity();
     };
 
-    // Listener genérico para inputs
     form.addEventListener('input', e => {
         const activeTabId = document.querySelector('.tab-content.active').id;
         const input = e.target;
         const id = input.id;
         
-        // Validaciones para CLIENTE
         if (activeTabId === 'cliente') {
             if (id === 'cliente-nombre') {
                 const isValid = /^[a-zA-Z\s]{3,}$/.test(input.value);
@@ -147,7 +151,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
-        // Validaciones para RESTAURANTE
         if (activeTabId === 'restaurante') {
             if (id === 'restaurante-nombre') {
                 const isValid = input.value.length >= 3;
@@ -185,7 +188,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         
-        // Validaciones para REPARTIDOR
         if (activeTabId === 'repartidor') {
             if (id === 'repartidor-nombre') {
                 const isValid = /^[a-zA-Z\s]{3,}$/.test(input.value);
@@ -213,7 +215,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
-        // Validación de Términos (común a todos)
         if (id === 'terms-check') {
             validationStatus.terms = input.checked;
         }
@@ -258,19 +259,21 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .then(response => response.json())
             .then(data => {
-                alert(data.message);
+                showNotification(data.message);
+                
                 if (data.message === '¡Cuenta creada con éxito!') {
-                    form.reset();
-                    resetValidation();
+                    // Esperamos 2 segundos para que el usuario vea el mensaje y luego redirigimos
+                    setTimeout(() => {
+                        window.location.href = '/login.html';
+                    }, 2000);
                 }
             })
             .catch((error) => {
                 console.error('Error:', error);
-                alert('Ocurrió un error al intentar crear la cuenta.');
+                showNotification('Error de Conexión. Inténtalo más tarde.');
             });
         }
     });
     
-    // Inicializa la validación para la pestaña activa al cargar la página
     setupValidationForActiveTab();
 });

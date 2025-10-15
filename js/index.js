@@ -82,26 +82,60 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // --- LÓGICA PARA EL ACORDEÓN DE FAQ ---
-    const faqItems = document.querySelectorAll('.faq-item');
+    const faqAccordionContainer = document.querySelector('#faq-modal .faq-accordion');
 
-    faqItems.forEach(item => {
-        const question = item.querySelector('.faq-question');
-        const answer = item.querySelector('.faq-answer');
+    // Función para cargar y mostrar las FAQs desde la API
+    const loadFaqs = () => {
+        fetch('http://127.0.0.1:5000/api/faq')
+            .then(response => response.json())
+            .then(data => {
+                faqAccordionContainer.innerHTML = ''; // Limpiar contenido previo
+                data.faqs.forEach(faq => {
+                    const item = document.createElement('div');
+                    item.className = 'faq-item';
+                    item.innerHTML = `
+                        <button class="faq-question">
+                            <span>${faq.question}</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>${faq.answer}</p>
+                        </div>
+                    `;
+                    faqAccordionContainer.appendChild(item);
+                });
+                // Una vez creados los elementos, se les añade la funcionalidad
+                setupFaqEventListeners();
+            })
+            .catch(error => console.error('Error al cargar las FAQs:', error));
+    };
 
-        question.addEventListener('click', () => {
-            const isOpen = item.classList.contains('active');
-
-            // Cierra todos los items
-            faqItems.forEach(i => {
-                i.classList.remove('active');
-                i.querySelector('.faq-answer').style.maxHeight = '0px';
-            });
-
-            // Si el item clickeado no estaba abierto, ábrelo
-            if (!isOpen) {
-                item.classList.add('active');
-                answer.style.maxHeight = answer.scrollHeight + 'px';
-            }
-        });
+    // Al abrir el modal, cargamos las preguntas (asegúrate de que este listener esté)
+    document.getElementById('open-faq-link').addEventListener('click', (e) => {
+        e.preventDefault();
+        loadFaqs();
+        document.getElementById('faq-modal').classList.add('active');
     });
+
+    // Función para manejar el click en las preguntas
+    const setupFaqEventListeners = () => {
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                const answer = item.querySelector('.faq-answer');
+                const isOpen = item.classList.contains('active');
+
+                faqItems.forEach(i => {
+                    i.classList.remove('active');
+                    i.querySelector('.faq-answer').style.maxHeight = '0px';
+                });
+
+                if (!isOpen) {
+                    item.classList.add('active');
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                }
+            });
+        });
+    };
 });
