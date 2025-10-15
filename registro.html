@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Mercy Food</title>
+    <link rel="shortcut icon" href="multimedia/logo.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/registro.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <div class="split-screen-container">
+        <div class="left-pane">
+            <div class="video-background"><video playsinline autoplay muted loop><source src="multimedia/r_video.mp4" type="video/mp4"></video></div>
+            <div class="video-overlay"></div>
+            <a href="index.html" class="return-link"><i class="fas fa-arrow-left"></i><span>Regresar</span></a>
+            <a href="index.html" class="logo-corner"><img src="multimedia/logo.png" alt="Mercy Food Logo"></a>
+        </div>
+
+        <div class="right-pane dark-mode">
+            <div class="form-container-glass">
+                <h2>Crea tu cuenta</h2>
+                
+                <div class="tabs">
+                    <button class="tab-link active" data-tab="cliente">Soy cliente</button>
+                    <button class="tab-link" data-tab="restaurante">Soy restaurante</button>
+                    <button class="tab-link" data-tab="repartidor">Soy repartidor</button>
+                </div>
+
+                <form id="register-form" novalidate>
+                    <div id="cliente" class="tab-content active">
+                        <div class="input-group">
+                            <label for="cliente-nombre">Nombre completo</label>
+                            <input type="text" id="cliente-nombre" placeholder="Armando Morales">
+                            <small class="error-message">El nombre solo debe contener letras.</small>
+                        </div>
+                        <div class="input-group">
+                            <label for="cliente-email">Correo electrónico</label>
+                            <input type="email" id="cliente-email" placeholder="bepe@gmail.com">
+                            <small class="error-message">Por favor, introduce un correo válido.</small>
+                        </div>
+                        <div class="input-group">
+                            <label for="cliente-pass">Contraseña</label>
+                            <input type="password" id="cliente-pass">
+                            <i class="fas fa-eye password-toggle-icon"></i>
+                            <small class="error-message"></small>
+                        </div>
+                        <div class="input-group">
+                            <label for="cliente-pass-confirm">Confirmar contraseña</label>
+                            <input type="password" id="cliente-pass-confirm">
+                            <i class="fas fa-eye password-toggle-icon"></i>
+                            <small class="error-message">Las contraseñas no coinciden.</small>
+                        </div>
+                    </div>
+                    <div id="restaurante" class="tab-content">
+                        <div class="input-group">
+                            <label for="restaurante-nombre">Nombre del restaurante</label>
+                            <input type="text" id="restaurante-nombre" placeholder="Pitzeria Mercy">
+                            <small class="error-message">El nombre es requerido (mín. 3 caracteres).</small>
+                        </div>
+                        <div class="input-group">
+                            <label for="restaurante-direccion">Dirección del local</label>
+                            <input type="text" id="restaurante-direccion" placeholder="Av. Tepito">
+                            <small class="error-message">La dirección es requerida (mín. 10 caracteres).</small>
+                        </div>
+                        <div class="input-group">
+                            <label for="restaurante-tipo">Tipo de cocina</label>
+                            <select id="restaurante-tipo">
+                                <option value="" disabled selected>Selecciona una categoría</option>
+                                <option value="mexicana">Mexicana</option>
+                                <option value="italiana">Italiana</option>
+                                <option value="japonesa">Japonesa</option>
+                                <option value="americana">Americana</option>
+                                <option value="cafeteria">Cafetería</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                            <small class="error-message">Debes seleccionar un tipo de cocina.</small>
+                        </div>
+                        <div class="input-group">
+                            <label for="restaurante-telefono">Teléfono de contacto</label>
+                            <input type="tel" id="restaurante-telefono" placeholder="Ej. 4421234567">
+                            <small class="error-message">Introduce un teléfono válido de 10 dígitos.</small>
+                        </div>
+                        <div class="input-group">
+                            <label for="restaurante-email">Correo de contacto</label>
+                            <input type="email" id="restaurante-email" placeholder="pitzeriamercy@gmail.com">
+                            <small class="error-message">Por favor, introduce un correo válido.</small>
+                        </div>
+                        <div class="input-group">
+                            <label for="restaurante-pass">Contraseña</label>
+                            <input type="password" id="restaurante-pass">
+                            <i class="fas fa-eye password-toggle-icon"></i>
+                            <small class="error-message"></small>
+                        </div>
+                        <div class="input-group">
+                            <label for="restaurante-pass-confirm">Confirmar contraseña</label>
+                            <input type="password" id="restaurante-pass-confirm">
+                            <i class="fas fa-eye password-toggle-icon"></i>
+                            <small class="error-message">Las contraseñas no coinciden.</small>
+                        </div>
+                    </div>
+                    <div id="repartidor" class="tab-content">
+                        <div class="input-group">
+                            <label for="repartidor-nombre">Nombre completo</label>
+                            <input type="text" id="repartidor-nombre" placeholder="Bepe">
+                            <small class="error-message">El nombre solo debe contener letras (mín. 3).</small>
+                        </div>
+                        <div class="input-group">
+                            <label for="repartidor-email">Correo electrónico</label>
+                            <input type="email" id="repartidor-email" placeholder="bepe@gmail.com">
+                            <small class="error-message">Por favor, introduce un correo válido.</small>
+                        </div>
+                        <div class="input-group">
+                            <label for="repartidor-vehiculo">Tipo de vehículo</label>
+                            <select id="repartidor-vehiculo">
+                                <option value="" disabled selected>Selecciona tu vehículo</option>
+                                <option value="motocicleta">Motocicleta</option>
+                                <option value="bicicleta">Bicicleta</option>
+                                <option value="automovil">Automóvil</option>
+                            </select>
+                            <small class="error-message">Debes seleccionar un tipo de vehículo.</small>
+                        </div>
+                        <div class="input-group">
+                            <label for="repartidor-pass">Contraseña</label>
+                            <input type="password" id="repartidor-pass">
+                            <i class="fas fa-eye password-toggle-icon"></i>
+                            <small class="error-message"></small>
+                        </div>
+                        <div class="input-group">
+                            <label for="repartidor-pass-confirm">Confirmar contraseña</label>
+                            <input type="password" id="repartidor-pass-confirm">
+                            <i class="fas fa-eye password-toggle-icon"></i>
+                            <small class="error-message">Las contraseñas no coinciden.</small>
+                        </div>
+                    </div>
+
+                    <ul class="password-checklist">
+                        <li id="length">8-25 caracteres</li>
+                        <li id="uppercase">Una mayúscula</li>
+                        <li id="special">Un caracter especial (!@#$%)</li>
+                    </ul>
+                    <div class="terms-group">
+                        <input type="checkbox" id="terms-check">
+                        <label for="terms-check">Acepto los <a id="open-terms-link">términos y condiciones</a></label>
+                    </div>
+
+                    <button type="submit" class="submit-btn" disabled>Crear cuenta</button>
+                </form>
+                <p class="login-redirect">¿Ya tienes una cuenta? <a href="login.html">Inicia sesión</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="terms-modal">
+        <div class="modal-glass">
+            <button class="modal-close-btn" id="close-terms-btn">&times;</button>
+            <h2>Términos y condiciones</h2>
+            <div class="modal-content">
+                <p><strong>Última actualización: 28 de septiembre de 2025</strong></p>
+                <p>Bienvenido a Mercy Food. Al utilizar nuestra plataforma, aceptas los siguientes términos y condiciones que rigen la relación entre los clientes, restaurantes, repartidores y nosotros.</p>
+                
+                <h4>1. Aceptación de los términos</h4>
+                <p>Al crear una cuenta o utilizar los servicios de Mercy Food, confirmas que has leído, entendido y aceptado estar sujeto a estos Términos y Condiciones. Si no estás de acuerdo con alguna parte de los términos, no podrás utilizar nuestros servicios.</p>
+
+                <h4>2. Descripción del servicio</h4>
+                <p>Mercy Food es una plataforma tecnológica que actúa como intermediario para conectar a:</p>
+                <ul>
+                    <li><strong>Clientes:</strong> que buscan y piden comida de establecimientos locales.</li>
+                    <li><strong>Restaurantes Socios:</strong> que ofrecen sus productos a través de nuestro catálogo digital.</li>
+                    <li><strong>Repartidores:</strong> que prestan servicios de entrega de manera independiente.</li>
+                </ul>
+
+                <h4>3. Cuentas de usuario</h4>
+                <p>Eres responsable de mantener la confidencialidad de tu cuenta y contraseña. Te comprometes a notificar a Mercy Food sobre cualquier uso no autorizado de tu cuenta. Debes proporcionar información precisa y completa al registrarte.</p>
+
+                <h4>4. Pedidos, pagos y entregas</h4>
+                <ul>
+                    <li><strong>Pedidos:</strong> Al realizar un pedido, entras en un contrato directo con el restaurante socio para la preparación de tu comida.</li>
+                    <li><strong>Pagos:</strong> Todos los pagos se procesan a través de nuestra plataforma segura. Aseguramos la encriptación de tu información financiera bajo el estándar PCI DSS.</li>
+                    <li><strong>Entregas:</strong> El tiempo de entrega es un estimado y puede variar. Nuestra plataforma asigna al repartidor más cercano para optimizar la logística.</li>
+                </ul>
+
+                <h4>5. Obligaciones de restaurantes y repartidores</h4>
+                <ul>
+                    <li><strong>Restaurantes:</strong> Son responsables de la calidad de la comida, la precisión del menú y de actualizar su información (horarios, disponibilidad).</li>
+                    <li><strong>Repartidores:</strong> Actúan como contratistas independientes y son responsables de realizar la entrega de manera segura y profesional.</li>
+                </ul>
+
+                <h4>6. Sistema de valoraciones</h4>
+                <p>Después de cada pedido completado, los clientes pueden calificar y dejar comentarios sobre el restaurante y el repartidor. Estas valoraciones son públicas y ayudan a mantener la calidad del servicio. Mercy Food se reserva el derecho de moderar o eliminar comentarios que infrinjan nuestras políticas.</p>
+
+                <h4>7. Limitación de responsabilidad</h4>
+                <p>Mercy Food no se hace responsable de la calidad de los productos ofrecidos por los restaurantes ni de incidentes durante la entrega por parte de los repartidores. Nuestra responsabilidad se limita a la correcta operación de la plataforma tecnológica.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/registro.js"></script>
+</body>
+</html>

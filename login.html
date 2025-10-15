@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Mercy Food</title>
+    <link rel="shortcut icon" href="multimedia/logo.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    <div class="split-screen-container">
+        <div class="left-pane dark-mode">
+            <div class="form-container-glass">
+                <h2>Bienvenido/a de vuelta</h2>
+                
+                <form id="login-form" novalidate>
+                    <div class="input-group">
+                        <label for="login-email">Correo electrónico</label>
+                        <input type="email" id="login-email" required placeholder="bepe@gmail.com">
+                        <small class="error-message">Introduce un correo electrónico válido.</small>
+                    </div>
+                    <div class="input-group">
+                        <label for="login-pass">Contraseña</label>
+                        <div class="password-wrapper">
+                            <input type="password" id="login-pass" required minlength="8">
+                            <i class="fas fa-eye password-toggle-icon"></i>
+                        </div>
+                        <small class="error-message">La contraseña es requerida.</small>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn" disabled>Iniciar Sesión</button>
+                </form>
+
+                <p class="register-redirect">¿No tienes una cuenta? <a href="registro.html">Regístrate aquí</a></p>
+            </div>
+        </div>
+
+        <div class="right-pane">
+            <div class="video-background">
+                <video playsinline autoplay muted loop>
+                    <source src="multimedia/l_video.mp4" type="video/mp4">
+                    Tu navegador no soporta videos.
+                </video>
+            </div>
+            <div class="video-overlay"></div>
+            
+            <a href="index.html" class="logo-corner">
+                <img src="multimedia/logo.png" alt="Mercy Food Logo">
+            </a>
+            <a href="index.html" class="return-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                <span>Regresar</span>
+            </a>
+        </div>
+    </div>
+    
+    <script src="js/login.js"></script>
+</body>
+</html>

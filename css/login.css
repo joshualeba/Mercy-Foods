@@ -1,0 +1,172 @@
+/* ============================================= */
+/* Variables y Estilos Globales */
+/* ============================================= */
+:root {
+    --primary-color: #FF6347;
+    --text-color-dark: #FFFFFF;
+    --white-color: #FFFFFF;
+    --success-color: #28a745;
+    --error-color: #dc3545;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    overflow: hidden;
+}
+
+* { box-sizing: border-box; }
+
+/* ============================================= */
+/* Contenedor Principal (Invertido) */
+/* ============================================= */
+.split-screen-container { display: flex; height: 100vh; }
+.left-pane, .right-pane { height: 100%; }
+
+/* ============================================= */
+/* Lado Izquierdo (Formulario) */
+/* ============================================= */
+.left-pane.dark-mode {
+    width: 67vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #121212;
+    z-index: 5;
+}
+.form-container-glass {
+    width: 90%;
+    max-width: 500px;
+    padding: 2.5rem;
+    background: rgba(30, 30, 30, 0.5);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    color: var(--text-color-dark);
+}
+.form-container-glass h2 { text-align: center; font-weight: 700; margin-bottom: 2rem; }
+
+/* ============================================= */
+/* Estilos de Inputs y Validaciones */
+/* ============================================= */
+.input-group { margin-bottom: 1.5rem; } /* QUITAMOS position: relative */
+.input-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: rgba(255,255,255,0.8);
+}
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 8px;
+    background: rgba(0,0,0,0.2);
+    color: var(--text-color-dark);
+    transition: all 0.3s ease;
+}
+.input-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(255, 99, 71, 0.2);
+}
+
+/* --- ESTILOS CORREGIDOS PARA EL OJO --- */
+.password-wrapper {
+    position: relative; /* El contexto de posición es AHORA este div */
+}
+.password-toggle-icon {
+    position: absolute;
+    top: 50%; /* 50% de la altura del password-wrapper */
+    right: 15px;
+    transform: translateY(-50%); /* Centrado vertical perfecto */
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.7);
+}
+.password-wrapper input { /* Aplicamos el padding al input dentro del wrapper */
+    padding-right: 40px; 
+}
+.error-message {
+    color: var(--error-color);
+    font-size: 0.8rem;
+    margin-top: 5px;
+    display: none;
+}
+.input-group.error .password-wrapper input, .input-group.error input { border-color: var(--error-color); }
+.input-group.success .password-wrapper input, .input-group.success input { border-color: var(--success-color); }
+.input-group.error .error-message { display: block; }
+
+/* ============================================= */
+/* Botones y Enlaces */
+/* ============================================= */
+.forgot-password {
+    display: block;
+    text-align: right;
+    margin-top: -1rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+}
+.forgot-password:hover { color: var(--primary-color); }
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    background: var(--primary-color);
+    color: var(--white-color);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.submit-btn:hover { background: #e55337; transform: translateY(-2px); }
+.submit-btn:disabled { background: #555; cursor: not-allowed; transform: none; }
+.register-redirect {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: rgba(255,255,255,0.7);
+}
+.register-redirect a { color: var(--primary-color); font-weight: 600; text-decoration: none; }
+
+/* ============================================= */
+/* Lado Derecho (Video) */
+/* ============================================= */
+.right-pane {
+    width: 33vw;
+    position: relative;
+    color: var(--white-color);
+}
+.video-background, .video-overlay {
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%; z-index: 1;
+}
+.video-background video { width: 100%; height: 100%; object-fit: cover; }
+.video-overlay { background: rgba(0, 0, 0, 0.6); }
+.logo-corner { position: absolute; top: 2rem; right: 2rem; z-index: 10; }
+.logo-corner img { height: 50px; }
+.return-link {
+    position: absolute; top: 2rem; left: 2rem; z-index: 10;
+    display: flex; align-items: center; gap: 0.5rem;
+    color: var(--white-color); text-decoration: none; font-weight: 500;
+    transition: color 0.3s ease;
+}
+.return-link:hover { color: var(--primary-color); }
+
+/* ============================================= */
+/* Responsividad */
+/* ============================================= */
+@media (max-width: 991px) {
+    body { overflow: auto; }
+    .split-screen-container { display: block; position: relative; height: auto; min-height: 100vh; }
+    .right-pane { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; }
+    .left-pane.dark-mode {
+        width: 100%;
+        min-height: 100vh;
+        background: transparent;
+        padding: 2rem 1rem;
+    }
+    .form-container-glass { background: rgba(18, 18, 18, 0.5); }
+}

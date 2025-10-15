@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercy Food - Tu comida favorita a domicilio</title>
+    <link rel="shortcut icon" href="multimedia/logo.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="css/loader.css">
+</head>
+<body>
+
+    <div id="loader-wrapper">
+        <div class="loadingspinner">
+            <div id="square1"></div>
+            <div id="square2"></div>
+            <div id="square3"></div>
+            <div id="square4"></div>
+            <div id="square5"></div>
+        </div>
+        <span id="loader-text">Cargando tu experiencia...</span>
+    </div>
+
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="#" class="nav-brand">
+                    <img src="multimedia/logo.png" alt="Mercy Food Logo" class="nav-logo">
+                    <span class="nav-brand-text">Mercy Food</span>
+                </a>
+                
+                <input type="checkbox" id="nav-toggle" class="nav-toggle">
+                
+                <ul class="nav-links">
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#featured-restaurants-section">Restaurantes</a></li>
+                    <li><a href="#partners-section">Únete</a></li>
+                    <li><a href="login.html" class="btn-secondary-custom">Iniciar Sesión</a></li>
+                    <li><a href="registro.html" class="btn-primary-custom">Registrarse</a></li>
+                </ul>
+
+                <label for="nav-toggle" class="nav-toggle-label">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </label>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="video-background">
+                <video playsinline autoplay muted loop>
+                    <source src="multimedia/video_hero.mp4" type="video/mp4">
+                    Tu navegador no soporta videos.
+                </video>
+            </div>
+            <div class="video-overlay"></div>
+            <div class="hero-content text-center text-white">
+                <div class="hero-text">
+                    <h1 class="display-4 fw-bold">Mercy Food es<br><span id="typed-text"></span></h1>
+                </div>
+                <div class="search-container">
+                    <form class="search-form">
+                        <input class="search-input" type="search" placeholder="Busca un platillo..." aria-label="Search">
+                        <a href="login.html" class="search-button" style="text-decoration: none;">Buscar</a>
+                    </form>
+                </div>
+            </div>
+            <a href="#about-us-section" class="scroll-down-link" aria-label="Ir a la siguiente sección">
+                <div class="arrow"></div>
+                <div class="arrow"></div>
+                <div class="arrow"></div>
+            </a>
+        </section>
+
+        <section id="about-us-section" class="about-us">
+            <div class="container text-center">
+                <h2 class="section-title">Más que delivery, somos una comunidad</h2>
+                <p class="about-us-text">Mercy Food es un ecosistema digital que fortalece la economía local, conectando a clientes, restaurantes y repartidores en un mismo lugar.</p>
+                
+                <div class="user-types-container">
+                    <div class="user-type">
+                        <div class="user-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        </div>
+                        <h3>Para ti</h3>
+                        <p>Descubre y disfruta los mejores sabores de tu barrio.</p>
+                    </div>
+                    
+                    <div class="user-type">
+                        <div class="user-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6.5" cy="17.5" r="2.5"></circle><circle cx="17.5" cy="17.5" r="2.5"></circle><path d="M14 15h2.5a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1"></path><path d="M9 17.5H3.5a2 2 0 0 1-2-2V12a2 2 0 0 1 2-2h2.5"></path><path d="m9 11.5 3 4"></path><path d="M4.5 10H8a2 2 0 0 1 2 2v2"></path></svg>                        </div>
+                        <h3>Para repartidores</h3>
+                        <p>Genera ingresos con horarios flexibles y a tu propio ritmo.</p>
+                    </div>
+
+                    <div class="user-type">
+                        <div class="user-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 21h20M20 8v13H4V8M18 4H6v4h12V4z"></path></svg>
+                        </div>
+                        <h3>Para restaurantes</h3>
+                        <p>Haz crecer tu negocio llegando a miles de nuevos clientes.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="quote-section">
+             <div class="container text-center">
+                <figure>
+                    <blockquote>"Estamos conectados por mil lazos. La comida es uno de los más fuertes."</blockquote>
+                    <figcaption>— Herman Melville</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section id="how-it-works-section" class="how-it-works">
+            <div class="container text-center">
+                <h2 class="section-title">Tu comida a solo 3 pasos</h2>
+                <div class="row">
+                    <div class="col-md-4"><div class="step"><div class="step-icon"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div><h3>1. Busca</h3><p>Encuentra tus restaurantes y platillos favoritos.</p></div></div>
+                    <div class="col-md-4"><div class="step"><div class="step-icon"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg></div><h3>2. Ordena</h3><p>Selecciona lo que te guste y paga de forma segura.</p></div></div>
+                    <div class="col-md-4"><div class="step"><div class="step-icon"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.66 6.34l-1.42 1.42"/><path d="M12 2v4"/><path d="M4.93 4.93l1.42 1.42"/><path d="M2 12h4"/><path d="M19.07 19.07l-1.42-1.42"/><path d="M12 18v4"/><path d="M6.34 17.66l-1.42-1.42"/><path d="M22 12h-4"/><circle cx="12" cy="12" r="2"/><path d="M14.12 14.12l4.24 4.24"/><path d="M12 12l-8-8"/></svg></div><h3>3. Disfruta</h3><p>Recibe tu comida en la puerta de tu casa.</p></div></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="featured-restaurants-section" class="featured-restaurants">
+             <div class="container">
+                <h2 class="section-title text-center">Descubre los favoritos de la zona</h2>
+                <div class="restaurant-showcase">
+                    <div class="restaurant-card-new"><div class="img-container"><img src="multimedia/r1.png" alt="Fachada de La Pizzería del Barrio"></div><div class="card-content"><h3>La Pizzería del Barrio</h3><p class="category">Pizza • Italiana</p><p class="rating">⭐ 4.8 (125 evaluaciones)</p><a href="registro.html" class="btn-ver-mas">Ver más...</a></div></div>
+                    <div class="restaurant-card-new"><div class="img-container"><img src="multimedia/r2.png" alt="Interior de Sushi Roll Express"></div><div class="card-content"><h3>Sushi Roll Express</h3><p class="category">Sushi • Japonesa</p><p class="rating">⭐ 4.9 (210 evaluaciones)</p><a href="registro.html" class="btn-ver-mas">Ver más...</a></div></div>
+                    <div class="restaurant-card-new"><div class="img-container"><img src="multimedia/r3.png" alt="Exterior de Tacos El Campeón"></div><div class="card-content"><h3>Tacos "El Campeón"</h3><p class="category">Tacos • Mexicana</p><p class="rating">⭐ 4.7 (98 evaluaciones)</p><a href="registro.html" class="btn-ver-mas">Ver más...</a></div></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials-carousel">
+            <div class="container">
+                <h2 class="section-title text-center">Lo que dicen nuestros clientes</h2>
+                <div class="swiper testimonials-slider">
+                    <div class="swiper-wrapper"><div class="swiper-slide"><div class="testimonial-card"><p>"¡Increíble servicio! La comida llegó caliente y rápido."</p><div class="testimonial-author">- Ana Sofía L.</div></div></div><div class="swiper-slide"><div class="testimonial-card"><p>"Me encanta apoyar a los restaurantes de mi zona. ¡Recomendado!"</p><div class="testimonial-author">- Carlos G.</div></div></div><div class="swiper-slide"><div class="testimonial-card"><p>"La mejor opción para no cocinar. Siempre puntuales."</p><div class="testimonial-author">- Mariana P.</div></div></div><div class="swiper-slide"><div class="testimonial-card"><p>"Descubrí una joya de restaurante local gracias a la app."</p><div class="testimonial-author">- Javier M.</div></div></div><div class="swiper-slide"><div class="testimonial-card"><p>"El proceso de pago es súper seguro y fácil. Cero complicaciones."</p><div class="testimonial-author">- Fernanda R.</div></div></div><div class="swiper-slide"><div class="testimonial-card"><p>"Perfecto para pedir comida para toda la familia. Hay para todos."</p><div class="testimonial-author">- Ricardo V.</div></div></div></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="join-us-section" id="partners-section">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="join-us-image">
+                            <img src="multimedia/repartidor.png" alt="Repartidor de Mercy Food sonriendo">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="join-us-content">
+                            <h2 class="section-title">Genera ingresos a tu ritmo</h2>
+                            <p>Sé tu propio jefe y reparte felicidad (y comida deliciosa) en tu comunidad. Con Mercy Food, tienes la flexibilidad de elegir tus horarios y la oportunidad de ganar dinero extra.</p>
+                            <ul class="benefits-list">
+                                <li>✓ Horarios flexibles</li>
+                                <li>✓ Gana por cada entrega</li>
+                                <li>✓ Sé parte de una comunidad</li>
+                            </ul>
+                            <a href="registro_repartidor.html" class="btn-primary-custom">Conviértete en repartidor</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="for-partners-section">
+            <div class="container">
+                <div class="row align-items-center flex-row-reverse">
+                    <div class="col-lg-6">
+                        <div class="partner-image">
+                            <img src="multimedia/socio.png" alt="Dueño de un restaurante local usando una tablet">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="partner-content">
+                            <h2 class="section-title">Tu sabor, nuestra tecnología. Juntos crecemos.</h2>
+                            <p>Únete a Mercy Food y lleva tus platillos a miles de nuevos clientes en tu comunidad. Te ofrecemos las herramientas que necesitas para gestionar tus pedidos, aumentar tus ventas y enfocarte en lo que mejor sabes hacer: cocinar.</p>
+                            <ul class="benefits-list">
+                                <li>✓ Llega a más clientes en tu área</li>
+                                <li>✓ Herramientas fáciles para gestionar tu menú y pedidos</li>
+                                <li>✓ Sin comisiones ocultas, solo crecimiento</li>
+                            </ul>
+                            <a href="registro_restaurante.html" class="btn-primary-custom">Asóciate con nosotros</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal-overlay" id="privacy-modal">
+        <div class="modal-glass">
+            <button class="modal-close-btn" id="close-modal-btn">&times;</button>
+            <h2>Política de privacidad</h2>
+            <div class="modal-content">
+                <p><strong>Última actualización: 28 de septiembre de 2025</strong></p>
+                <p>En Mercy Food, tu privacidad es nuestra prioridad. Esta política explica qué información recopilamos y cómo la usamos para ofrecerte un servicio seguro y eficiente.</p>
+                
+                <h4>1. Información que recopilamos</h4>
+                <ul>
+                    <li><strong>Información de la cuenta:</strong> Nombre, correo electrónico y contraseña al registrarte como cliente, repartidor o restaurante.</li>
+                    <li><strong>Información de pago:</strong> Datos de tu tarjeta de crédito/débito o cuenta de PayPal. Toda esta información viaja encriptada y cumplimos con los estándares de seguridad PCI DSS para protegerla.</li>
+                    <li><strong>Información de ubicación:</strong> Tu dirección para la entrega de pedidos y tu ubicación en tiempo real si eres un repartidor activo, para la asignación de pedidos.</li>
+                    <li><strong>Información de pedidos:</strong> Historial de tus pedidos, restaurantes favoritos y valoraciones que has realizado.</li>
+                </ul>
+
+                <h4>2. Cómo usamos tu información</h4>
+                <ul>
+                    <li>Para procesar tus pedidos y pagos de forma segura.</li>
+                    <li>Para conectar a clientes con los restaurantes y asignar el repartidor más cercano.</li>
+                    <li>Para mejorar y personalizar tu experiencia, mostrando restaurantes relevantes y promociones de tu interés.</li>
+                    <li>Para comunicarnos contigo sobre el estado de tu pedido o para ofrecerte soporte.</li>
+                </ul>
+
+                <h4>3. Cómo compartimos tu información</h4>
+                <p>Compartimos información únicamente cuando es necesario para completar tu pedido. Por ejemplo:</p>
+                <ul>
+                    <li><strong>Con Restaurantes:</strong> Compartimos los detalles de tu pedido (sin incluir tus datos de pago) para que puedan prepararlo.</li>
+                    <li><strong>Con Repartidores:</strong> Compartimos tu nombre y dirección de entrega para que puedan llevarte el pedido.</li>
+                </ul>
+
+                <h4>4. Seguridad de tus datos</h4>
+                <p>Utilizamos medidas de seguridad avanzadas, como la encriptación de datos, para proteger tu información contra el acceso no autorizado. Nuestro sistema está diseñado para tener una alta disponibilidad y proteger la integridad de tus datos en todo momento.</p>
+                
+                <h4>5. Tus derechos</h4>
+                <p>Tienes derecho a acceder, rectificar o eliminar tu información personal en cualquier momento desde la configuración de tu cuenta o contactando a nuestro equipo de soporte.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="terms-modal">
+        <div class="modal-glass">
+            <button class="modal-close-btn" id="close-terms-btn">&times;</button>
+            <h2>Términos y condiciones</h2>
+            <div class="modal-content">
+                <p><strong>Última actualización: 28 de septiembre de 2025</strong></p>
+                <p>Bienvenido a Mercy Food. Al utilizar nuestra plataforma, aceptas los siguientes términos y condiciones que rigen la relación entre los clientes, restaurantes, repartidores y nosotros.</p>
+                
+                <h4>1. Aceptación de los términos</h4>
+                <p>Al crear una cuenta o utilizar los servicios de Mercy Food, confirmas que has leído, entendido y aceptado estar sujeto a estos Términos y Condiciones. Si no estás de acuerdo con alguna parte de los términos, no podrás utilizar nuestros servicios.</p>
+
+                <h4>2. Descripción del servicio</h4>
+                <p>Mercy Food es una plataforma tecnológica que actúa como intermediario para conectar a:</p>
+                <ul>
+                    <li><strong>Clientes:</strong> que buscan y piden comida de establecimientos locales.</li>
+                    <li><strong>Restaurantes Socios:</strong> que ofrecen sus productos a través de nuestro catálogo digital.</li>
+                    <li><strong>Repartidores:</strong> que prestan servicios de entrega de manera independiente.</li>
+                </ul>
+
+                <h4>3. Cuentas de usuario</h4>
+                <p>Eres responsable de mantener la confidencialidad de tu cuenta y contraseña. Te comprometes a notificar a Mercy Food sobre cualquier uso no autorizado de tu cuenta. Debes proporcionar información precisa y completa al registrarte.</p>
+
+                <h4>4. Pedidos, pagos y entregas</h4>
+                <ul>
+                    <li><strong>Pedidos:</strong> Al realizar un pedido, entras en un contrato directo con el restaurante socio para la preparación de tu comida.</li>
+                    <li><strong>Pagos:</strong> Todos los pagos se procesan a través de nuestra plataforma segura. Aseguramos la encriptación de tu información financiera bajo el estándar PCI DSS.</li>
+                    <li><strong>Entregas:</strong> El tiempo de entrega es un estimado y puede variar. Nuestra plataforma asigna al repartidor más cercano para optimizar la logística.</li>
+                </ul>
+
+                <h4>5. Obligaciones de restaurantes y repartidores</h4>
+                <ul>
+                    <li><strong>Restaurantes:</strong> Son responsables de la calidad de la comida, la precisión del menú y de actualizar su información (horarios, disponibilidad).</li>
+                    <li><strong>Repartidores:</strong> Actúan como contratistas independientes y son responsables de realizar la entrega de manera segura y profesional.</li>
+                </ul>
+
+                <h4>6. Sistema de valoraciones</h4>
+                <p>Después de cada pedido completado, los clientes pueden calificar y dejar comentarios sobre el restaurante y el repartidor. Estas valoraciones son públicas y ayudan a mantener la calidad del servicio. Mercy Food se reserva el derecho de moderar o eliminar comentarios que infrinjan nuestras políticas.</p>
+
+                <h4>7. Limitación de responsabilidad</h4>
+                <p>Mercy Food no se hace responsable de la calidad de los productos ofrecidos por los restaurantes ni de incidentes durante la entrega por parte de los repartidores. Nuestra responsabilidad se limita a la correcta operación de la plataforma tecnológica.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="faq-modal">
+        <div class="modal-glass">
+            <button class="modal-close-btn" id="close-faq-btn">&times;</button>
+            <h2>Preguntas frecuentes</h2>
+            <div class="modal-content">
+                <div class="faq-accordion">
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>¿Qué métodos de pago aceptan?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Aceptamos pagos con tarjeta de crédito/débito y PayPal. Toda tu información de pago se maneja de forma segura y encriptada.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>¿Puedo seguir mi pedido en tiempo real?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>¡Sí! Una vez que tu pedido es aceptado, podrás ver su estado en tiempo real, desde "En preparación" hasta "Entregado" en la puerta de tu casa.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Soy repartidor, ¿cómo funciona la asignación de pedidos?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Nuestro sistema asigna automáticamente los pedidos al repartidor disponible que se encuentre más cerca del restaurante para optimizar los tiempos de entrega.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Tengo un restaurante, ¿cómo puedo gestionar mi menú?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Ofrecemos un "portal de restaurantes" donde puedes agregar, editar o eliminar platillos, actualizar precios, horarios y consultar tus reportes de ventas de forma sencilla.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>¿Qué hago si tengo un problema con mi pedido?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Contamos con un chat de soporte en vivo para ayudarte con cualquier inconveniente. Nuestro objetivo es darte una respuesta en el menor tiempo posible.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="site-footer">
+        <div class="container"><div class="row"><div class="col-lg-4 col-md-6"><div class="footer-about"><a href="#" class="footer-logo"><img src="multimedia/logo.png" alt="Mercy Food Logo"><span>Mercy Food</span></a><p>Conectando los sabores de tu localidad con la puerta de tu casa. Apoya el comercio local con cada pedido.</p></div></div><div class="col-lg-2 col-md-6"><div class="footer-links"><h4>Navegación</h4><ul><li><a href="#">Inicio</a></li><li><a href="#featured-restaurants-section">Restaurantes</a></li><li><a href="#partners-section">Únete</a></li><li><a href="registro.html">Registrarse</a></li></ul></div></div><div class="col-lg-3 col-md-6"><div class="footer-links"><h4>Legal</h4><ul><li><a href="#" id="open-terms-link">Términos y condiciones</a></li><li><a href="#" id="open-modal-link">Política de privacidad</a></li><li><a href="#" id="open-faq-link">Preguntas frecuentes</a></li></ul></div></div><div class="col-lg-3 col-md-6"><div class="footer-social"><h4>Síguenos</h4><div class="social-icons"><a href="#" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a><a href="#" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a><a href="#" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a></div></div></div></div><div class="footer-bottom"><p>&copy; 2025 Mercy Food. Todos los derechos reservados.</p></div></div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>
