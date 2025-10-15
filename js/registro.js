@@ -1,3 +1,12 @@
+// --- LÓGICA PARA OCULTAR EL LOADER ---
+    window.addEventListener('load', function() {
+        const loaderWrapper = document.getElementById('loader-wrapper');
+        loaderWrapper.style.opacity = '0';
+        setTimeout(() => {
+            loaderWrapper.style.display = 'none';
+        }, 500);
+    });
+
 document.addEventListener('DOMContentLoaded', function() {
     
     // --- LÓGICA GENERAL Y DE PESTAÑAS ---
@@ -215,10 +224,50 @@ document.addEventListener('DOMContentLoaded', function() {
     // Envío del formulario
     form.addEventListener('submit', e => {
         e.preventDefault();
+        
         if (!submitBtn.disabled) {
-            alert('¡Cuenta creada con éxito! (Aquí iría la lógica de Flask)');
-            form.reset();
-            resetValidation(); // Resetea todo para un nuevo registro
+            const activeTabId = document.querySelector('.tab-content.active').id;
+            let formData = {
+                role: activeTabId
+            };
+
+            if (activeTabId === 'cliente') {
+                formData.nombre = document.getElementById('cliente-nombre').value;
+                formData.email = document.getElementById('cliente-email').value;
+                formData.password = document.getElementById('cliente-pass').value;
+            } else if (activeTabId === 'restaurante') {
+                formData.nombre = document.getElementById('restaurante-nombre').value;
+                formData.direccion = document.getElementById('restaurante-direccion').value;
+                formData.tipo = document.getElementById('restaurante-tipo').value;
+                formData.telefono = document.getElementById('restaurante-telefono').value;
+                formData.email = document.getElementById('restaurante-email').value;
+                formData.password = document.getElementById('restaurante-pass').value;
+            } else if (activeTabId === 'repartidor') {
+                formData.nombre = document.getElementById('repartidor-nombre').value;
+                formData.email = document.getElementById('repartidor-email').value;
+                formData.vehiculo = document.getElementById('repartidor-vehiculo').value;
+                formData.password = document.getElementById('repartidor-pass').value;
+            }
+
+            fetch('http://127.0.0.1:5000/api/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+                if (data.message === '¡Cuenta creada con éxito!') {
+                    form.reset();
+                    resetValidation();
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('Ocurrió un error al intentar crear la cuenta.');
+            });
         }
     });
     

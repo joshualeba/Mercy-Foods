@@ -1,0 +1,111 @@
+/* css/detalle.css */
+
+/* --- HERO DEL RESTAURANTE --- */
+.restaurant-hero {
+    position: relative;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white-color);
+    text-align: center;
+}
+
+.restaurant-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../multimedia/r2.png') no-repeat center center;
+    background-size: cover;
+    z-index: -1;
+}
+
+.restaurant-info h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+}
+
+.restaurant-info p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* --- CONTENIDO PRINCIPAL DE LA PÁGINA --- */
+.page-content {
+    background-color: #fff;
+    padding: 80px 0;
+    margin-top: -80px; /* Sube la sección para que se solape con el hero */
+    border-radius: 40px 40px 0 0;
+    position: relative;
+    z-index: 10;
+}
+
+/* --- SECCIÓN DEL MENÚ --- */
+.menu-section h2 {
+    font-weight: 700;
+    margin-bottom: 3rem;
+}
+
+.menu-category {
+    margin-bottom: 3rem;
+}
+
+.menu-category h3 {
+    font-weight: 600;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--primary-color);
+    display: inline-block;
+    margin-bottom: 2rem;
+}
+
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #eee;
+}
+
+.menu-item:last-child {
+    border-bottom: none;
+}
+
+.menu-item-details h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.menu-item-details p {
+    color: #6c757d;
+    margin: 0;
+}
+
+.menu-item-price {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    white-space: nowrap;
+    margin-left: 2rem;
+}
+
+/* --- BOTÓN PARA AÑADIR (EJEMPLO) --- */
+.add-to-cart-btn {
+    background: var(--primary-color);
+    color: var(--white-color);
+    border: none;
+    border-radius: 50px;
+    padding: 8px 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #e55337;
+}
